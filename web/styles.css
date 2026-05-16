@@ -1,0 +1,159 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #18202f;
+  background: #eef2f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d9e0ea;
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-weight: 800;
+  color: #0f766e;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.copy {
+  max-width: 660px;
+  color: #5b6473;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #c8d1df;
+  border-radius: 6px;
+  padding: 10px 11px;
+  font: inherit;
+  background: #ffffff;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+button {
+  border: 1px solid #b9c4d3;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 800;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.primary {
+  width: 100%;
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+}
+
+pre {
+  min-height: 520px;
+  margin: 0;
+  overflow: auto;
+  padding: 14px;
+  border-radius: 6px;
+  background: #111827;
+  color: #e5edf7;
+  white-space: pre-wrap;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.overlay-list {
+  display: grid;
+  gap: 10px;
+}
+
+.overlay-card {
+  display: grid;
+  gap: 6px;
+  border: 1px solid #d9e0ea;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.overlay-card span {
+  color: #4b5563;
+}
+
+@media (max-width: 840px) {
+  .hero,
+  .grid,
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
+

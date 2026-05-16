@@ -1,0 +1,32 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/streamer",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/donate/:streamer_id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/checkout/:payment_intent_id",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/overlay/:streamer_id",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+donation_id,sender_name_raw,sender_email_raw,amount,payment_method,platform,message_raw,label_multiclass,text_for_model
+sample_benign_000,Budi,user0@example.com,10000,QRIS,Saweria,Semangat bang,benign,Budi Semangat bang budi semangat bang
+sample_benign_001,Ayu,user1@example.com,15000,QRIS,Saweria,Semangat bang 😺🐳,benign,Ayu Semangat bang 😺🐳 ayu semangat bang
+sample_benign_002,Raka,user2@example.com,20000,QRIS,Saweria,GG mainnya,benign,Raka GG mainnya raka gg mainnya
+sample_benign_003,Nina,user3@example.com,25000,QRIS,Saweria,Sehat selalu,benign,Nina Sehat selalu nina sehat selalu
+sample_benign_004,ViewerBaik,user4@example.com,30000,QRIS,Saweria,Request lagu dong,benign,ViewerBaik Request lagu dong viewerbaik request lagu dong
+sample_benign_005,Budi,user5@example.com,35000,QRIS,Saweria,Lanjut bang seru banget,benign,Budi Lanjut bang seru banget budi lanjut bang seru banget
+sample_benign_006,Ayu,user6@example.com,40000,QRIS,Saweria,Mantap gameplay-nya,benign,Ayu Mantap gameplay-nya ayu mantap gameplaynya
+sample_benign_007,Raka,user7@example.com,45000,QRIS,Saweria,Terima kasih sudah live,benign,Raka Terima kasih sudah live raka terima kasih sudah live
+sample_benign_008,Nina,user8@example.com,50000,QRIS,Saweria,Bang jangan lupa makan,benign,Nina Bang jangan lupa makan nina bang jangan lupa makan
+sample_benign_009,ViewerBaik,user9@example.com,55000,QRIS,Saweria,Nice clutch tadi,benign,ViewerBaik Nice clutch tadi viewerbaik nice clutch tadi
+sample_benign_010,Budi,user10@example.com,10000,QRIS,Saweria,Support kecil dari aku,benign,Budi Support kecil dari aku budi support kecil dari aku
+sample_benign_011,Ayu,user11@example.com,15000,QRIS,Saweria,Semangat bang,benign,Ayu Semangat bang ayu semangat bang
+sample_benign_012,Raka,user12@example.com,20000,QRIS,Saweria,Semangat bang 😺🐳,benign,Raka Semangat bang 😺🐳 raka semangat bang
+sample_benign_013,Nina,user13@example.com,25000,QRIS,Saweria,GG mainnya,benign,Nina GG mainnya nina gg mainnya
+sample_benign_014,ViewerBaik,user14@example.com,30000,QRIS,Saweria,Sehat selalu,benign,ViewerBaik Sehat selalu viewerbaik sehat selalu
+sample_benign_015,Budi,user15@example.com,35000,QRIS,Saweria,Request lagu dong,benign,Budi Request lagu dong budi request lagu dong
+sample_benign_016,Ayu,user16@example.com,40000,QRIS,Saweria,Lanjut bang seru banget,benign,Ayu Lanjut bang seru banget ayu lanjut bang seru banget
+sample_benign_017,Raka,user17@example.com,45000,QRIS,Saweria,Mantap gameplay-nya,benign,Raka Mantap gameplay-nya raka mantap gameplaynya
+sample_benign_018,Nina,user18@example.com,50000,QRIS,Saweria,Terima kasih sudah live,benign,Nina Terima kasih sudah live nina terima kasih sudah live
+sample_benign_019,ViewerBaik,user19@example.com,55000,QRIS,Saweria,Bang jangan lupa makan,benign,ViewerBaik Bang jangan lupa makan viewerbaik bang jangan lupa makan
+sample_benign_020,Budi,user20@example.com,10000,QRIS,Saweria,Nice clutch tadi,benign,Budi Nice clutch tadi budi nice clutch tadi
+sample_benign_021,Ayu,user21@example.com,15000,QRIS,Saweria,Support kecil dari aku,benign,Ayu Support kecil dari aku ayu support kecil dari aku
+sample_benign_022,Raka,user22@example.com,20000,QRIS,Saweria,Semangat bang,benign,Raka Semangat bang raka semangat bang
+sample_benign_023,Nina,user23@example.com,25000,QRIS,Saweria,Semangat bang 😺🐳,benign,Nina Semangat bang 😺🐳 nina semangat bang
+sample_benign_024,ViewerBaik,user24@example.com,30000,QRIS,Saweria,GG mainnya,benign,ViewerBaik GG mainnya viewerbaik gg mainnya
+sample_benign_025,Budi,user25@example.com,35000,QRIS,Saweria,Sehat selalu,benign,Budi Sehat selalu budi sehat selalu
+sample_benign_026,Ayu,user26@example.com,40000,QRIS,Saweria,Request lagu dong,benign,Ayu Request lagu dong ayu request lagu dong
+sample_benign_027,Raka,user27@example.com,45000,QRIS,Saweria,Lanjut bang seru banget,benign,Raka Lanjut bang seru banget raka lanjut bang seru banget
+sample_benign_028,Nina,user28@example.com,50000,QRIS,Saweria,Mantap gameplay-nya,benign,Nina Mantap gameplay-nya nina mantap gameplaynya
+sample_benign_029,ViewerBaik,user29@example.com,55000,QRIS,Saweria,Terima kasih sudah live,benign,ViewerBaik Terima kasih sudah live viewerbaik terima kasih sudah live
+sample_benign_030,Budi,user30@example.com,10000,QRIS,Saweria,Bang jangan lupa makan,benign,Budi Bang jangan lupa makan budi bang jangan lupa makan
+sample_benign_031,Ayu,user31@example.com,15000,QRIS,Saweria,Nice clutch tadi,benign,Ayu Nice clutch tadi ayu nice clutch tadi
+sample_benign_032,Raka,user32@example.com,20000,QRIS,Saweria,Support kecil dari aku,benign,Raka Support kecil dari aku raka support kecil dari aku
+sample_benign_033,Nina,user33@example.com,25000,QRIS,Saweria,Semangat bang,benign,Nina Semangat bang nina semangat bang
+sample_benign_034,ViewerBaik,user34@example.com,30000,QRIS,Saweria,Semangat bang 😺🐳,benign,ViewerBaik Semangat bang 😺🐳 viewerbaik semangat bang
+sample_benign_035,Budi,user35@example.com,35000,QRIS,Saweria,GG mainnya,benign,Budi GG mainnya budi gg mainnya
+sample_benign_036,Ayu,user36@example.com,40000,QRIS,Saweria,Sehat selalu,benign,Ayu Sehat selalu ayu sehat selalu
+sample_benign_037,Raka,user37@example.com,45000,QRIS,Saweria,Request lagu dong,benign,Raka Request lagu dong raka request lagu dong
+sample_benign_038,Nina,user38@example.com,50000,QRIS,Saweria,Lanjut bang seru banget,benign,Nina Lanjut bang seru banget nina lanjut bang seru banget
+sample_benign_039,ViewerBaik,user39@example.com,55000,QRIS,Saweria,Mantap gameplay-nya,benign,ViewerBaik Mantap gameplay-nya viewerbaik mantap gameplaynya
+sample_benign_040,Budi,user40@example.com,10000,QRIS,Saweria,Terima kasih sudah live,benign,Budi Terima kasih sudah live budi terima kasih sudah live
+sample_benign_041,Ayu,user41@example.com,15000,QRIS,Saweria,Bang jangan lupa makan,benign,Ayu Bang jangan lupa makan ayu bang jangan lupa makan
+sample_benign_042,Raka,user42@example.com,20000,QRIS,Saweria,Nice clutch tadi,benign,Raka Nice clutch tadi raka nice clutch tadi
+sample_benign_043,Nina,user43@example.com,25000,QRIS,Saweria,Support kecil dari aku,benign,Nina Support kecil dari aku nina support kecil dari aku
+sample_benign_044,ViewerBaik,user44@example.com,30000,QRIS,Saweria,Semangat bang,benign,ViewerBaik Semangat bang viewerbaik semangat bang
+sample_benign_045,Budi,user45@example.com,35000,QRIS,Saweria,Semangat bang 😺🐳,benign,Budi Semangat bang 😺🐳 budi semangat bang
+sample_benign_046,Ayu,user46@example.com,40000,QRIS,Saweria,GG mainnya,benign,Ayu GG mainnya ayu gg mainnya
+sample_benign_047,Raka,user47@example.com,45000,QRIS,Saweria,Sehat selalu,benign,Raka Sehat selalu raka sehat selalu
+sample_benign_048,Nina,user48@example.com,50000,QRIS,Saweria,Request lagu dong,benign,Nina Request lagu dong nina request lagu dong
+sample_benign_049,ViewerBaik,user49@example.com,55000,QRIS,Saweria,Lanjut bang seru banget,benign,ViewerBaik Lanjut bang seru banget viewerbaik lanjut bang seru banget
+sample_spam_non_judol_000,TokoAyu,user0@example.com,10000,QRIS,Saweria,Follow IG aku ya,spam_non_judol,TokoAyu Follow IG aku ya tokoayu follow ig aku ya
+sample_spam_non_judol_001,PromoUser,user1@example.com,15000,QRIS,Saweria,Subscribe channel aku,spam_non_judol,PromoUser Subscribe channel aku promouser subscribe channel aku
+sample_spam_non_judol_002,LapakMurah,user2@example.com,20000,QRIS,Saweria,Jual akun murah,spam_non_judol,LapakMurah Jual akun murah lapakmurah jual akun murah
+sample_spam_non_judol_003,SubrekAku,user3@example.com,25000,QRIS,Saweria,Promo skincare murah,spam_non_judol,SubrekAku Promo skincare murah subrekaku promo skincare murah
+sample_spam_non_judol_004,JualCepat,user4@example.com,30000,QRIS,Saweria,Cek toko aku,spam_non_judol,JualCepat Cek toko aku jualcepat cek toko aku
+sample_spam_non_judol_005,TokoAyu,user5@example.com,35000,QRIS,Saweria,Diskon produk hari ini,spam_non_judol,TokoAyu Diskon produk hari ini tokoayu diskon produk hari ini
+sample_spam_non_judol_006,PromoUser,user6@example.com,40000,QRIS,Saweria,Subrek channel baru aku,spam_non_judol,PromoUser Subrek channel baru aku promouser subrek channel baru aku
+sample_spam_non_judol_007,LapakMurah,user7@example.com,45000,QRIS,Saweria,Mampir ke lapak aku,spam_non_judol,LapakMurah Mampir ke lapak aku lapakmurah mampir ke lapak aku
+sample_spam_non_judol_008,SubrekAku,user8@example.com,50000,QRIS,Saweria,Promo produk lokal,spam_non_judol,SubrekAku Promo produk lokal subrekaku promo produk lokal
+sample_spam_non_judol_009,JualCepat,user9@example.com,55000,QRIS,Saweria,Cek link bio aku,spam_non_judol,JualCepat Cek link bio aku jualcepat cek link bio aku
+sample_spam_non_judol_010,TokoAyu,user10@example.com,10000,QRIS,Saweria,Follow IG aku ya,spam_non_judol,TokoAyu Follow IG aku ya tokoayu follow ig aku ya
+sample_spam_non_judol_011,PromoUser,user11@example.com,15000,QRIS,Saweria,Subscribe channel aku,spam_non_judol,PromoUser Subscribe channel aku promouser subscribe channel aku
+sample_spam_non_judol_012,LapakMurah,user12@example.com,20000,QRIS,Saweria,Jual akun murah,spam_non_judol,LapakMurah Jual akun murah lapakmurah jual akun murah
+sample_spam_non_judol_013,SubrekAku,user13@example.com,25000,QRIS,Saweria,Promo skincare murah,spam_non_judol,SubrekAku Promo skincare murah subrekaku promo skincare murah
+sample_spam_non_judol_014,JualCepat,user14@example.com,30000,QRIS,Saweria,Cek toko aku,spam_non_judol,JualCepat Cek toko aku jualcepat cek toko aku
+sample_spam_non_judol_015,TokoAyu,user15@example.com,35000,QRIS,Saweria,Diskon produk hari ini,spam_non_judol,TokoAyu Diskon produk hari ini tokoayu diskon produk hari ini
+sample_spam_non_judol_016,PromoUser,user16@example.com,40000,QRIS,Saweria,Subrek channel baru aku,spam_non_judol,PromoUser Subrek channel baru aku promouser subrek channel baru aku
+sample_spam_non_judol_017,LapakMurah,user17@example.com,45000,QRIS,Saweria,Mampir ke lapak aku,spam_non_judol,LapakMurah Mampir ke lapak aku lapakmurah mampir ke lapak aku
+sample_spam_non_judol_018,SubrekAku,user18@example.com,50000,QRIS,Saweria,Promo produk lokal,spam_non_judol,SubrekAku Promo produk lokal subrekaku promo produk lokal
+sample_spam_non_judol_019,JualCepat,user19@example.com,55000,QRIS,Saweria,Cek link bio aku,spam_non_judol,JualCepat Cek link bio aku jualcepat cek link bio aku
+sample_spam_non_judol_020,TokoAyu,user20@example.com,10000,QRIS,Saweria,Follow IG aku ya,spam_non_judol,TokoAyu Follow IG aku ya tokoayu follow ig aku ya
+sample_spam_non_judol_021,PromoUser,user21@example.com,15000,QRIS,Saweria,Subscribe channel aku,spam_non_judol,PromoUser Subscribe channel aku promouser subscribe channel aku
+sample_spam_non_judol_022,LapakMurah,user22@example.com,20000,QRIS,Saweria,Jual akun murah,spam_non_judol,LapakMurah Jual akun murah lapakmurah jual akun murah
+sample_spam_non_judol_023,SubrekAku,user23@example.com,25000,QRIS,Saweria,Promo skincare murah,spam_non_judol,SubrekAku Promo skincare murah subrekaku promo skincare murah
+sample_spam_non_judol_024,JualCepat,user24@example.com,30000,QRIS,Saweria,Cek toko aku,spam_non_judol,JualCepat Cek toko aku jualcepat cek toko aku
+sample_spam_non_judol_025,TokoAyu,user25@example.com,35000,QRIS,Saweria,Diskon produk hari ini,spam_non_judol,TokoAyu Diskon produk hari ini tokoayu diskon produk hari ini
+sample_spam_non_judol_026,PromoUser,user26@example.com,40000,QRIS,Saweria,Subrek channel baru aku,spam_non_judol,PromoUser Subrek channel baru aku promouser subrek channel baru aku
+sample_spam_non_judol_027,LapakMurah,user27@example.com,45000,QRIS,Saweria,Mampir ke lapak aku,spam_non_judol,LapakMurah Mampir ke lapak aku lapakmurah mampir ke lapak aku
+sample_spam_non_judol_028,SubrekAku,user28@example.com,50000,QRIS,Saweria,Promo produk lokal,spam_non_judol,SubrekAku Promo produk lokal subrekaku promo produk lokal
+sample_spam_non_judol_029,JualCepat,user29@example.com,55000,QRIS,Saweria,Cek link bio aku,spam_non_judol,JualCepat Cek link bio aku jualcepat cek link bio aku
+sample_spam_non_judol_030,TokoAyu,user30@example.com,10000,QRIS,Saweria,Follow IG aku ya,spam_non_judol,TokoAyu Follow IG aku ya tokoayu follow ig aku ya
+sample_spam_non_judol_031,PromoUser,user31@example.com,15000,QRIS,Saweria,Subscribe channel aku,spam_non_judol,PromoUser Subscribe channel aku promouser subscribe channel aku
+sample_spam_non_judol_032,LapakMurah,user32@example.com,20000,QRIS,Saweria,Jual akun murah,spam_non_judol,LapakMurah Jual akun murah lapakmurah jual akun murah
+sample_spam_non_judol_033,SubrekAku,user33@example.com,25000,QRIS,Saweria,Promo skincare murah,spam_non_judol,SubrekAku Promo skincare murah subrekaku promo skincare murah
+sample_spam_non_judol_034,JualCepat,user34@example.com,30000,QRIS,Saweria,Cek toko aku,spam_non_judol,JualCepat Cek toko aku jualcepat cek toko aku
+sample_spam_non_judol_035,TokoAyu,user35@example.com,35000,QRIS,Saweria,Diskon produk hari ini,spam_non_judol,TokoAyu Diskon produk hari ini tokoayu diskon produk hari ini
+sample_spam_non_judol_036,PromoUser,user36@example.com,40000,QRIS,Saweria,Subrek channel baru aku,spam_non_judol,PromoUser Subrek channel baru aku promouser subrek channel baru aku
+sample_spam_non_judol_037,LapakMurah,user37@example.com,45000,QRIS,Saweria,Mampir ke lapak aku,spam_non_judol,LapakMurah Mampir ke lapak aku lapakmurah mampir ke lapak aku
+sample_spam_non_judol_038,SubrekAku,user38@example.com,50000,QRIS,Saweria,Promo produk lokal,spam_non_judol,SubrekAku Promo produk lokal subrekaku promo produk lokal
+sample_spam_non_judol_039,JualCepat,user39@example.com,55000,QRIS,Saweria,Cek link bio aku,spam_non_judol,JualCepat Cek link bio aku jualcepat cek link bio aku
+sample_spam_non_judol_040,TokoAyu,user40@example.com,10000,QRIS,Saweria,Follow IG aku ya,spam_non_judol,TokoAyu Follow IG aku ya tokoayu follow ig aku ya
+sample_spam_non_judol_041,PromoUser,user41@example.com,15000,QRIS,Saweria,Subscribe channel aku,spam_non_judol,PromoUser Subscribe channel aku promouser subscribe channel aku
+sample_spam_non_judol_042,LapakMurah,user42@example.com,20000,QRIS,Saweria,Jual akun murah,spam_non_judol,LapakMurah Jual akun murah lapakmurah jual akun murah
+sample_spam_non_judol_043,SubrekAku,user43@example.com,25000,QRIS,Saweria,Promo skincare murah,spam_non_judol,SubrekAku Promo skincare murah subrekaku promo skincare murah
+sample_spam_non_judol_044,JualCepat,user44@example.com,30000,QRIS,Saweria,Cek toko aku,spam_non_judol,JualCepat Cek toko aku jualcepat cek toko aku
+sample_spam_non_judol_045,TokoAyu,user45@example.com,35000,QRIS,Saweria,Diskon produk hari ini,spam_non_judol,TokoAyu Diskon produk hari ini tokoayu diskon produk hari ini
+sample_spam_non_judol_046,PromoUser,user46@example.com,40000,QRIS,Saweria,Subrek channel baru aku,spam_non_judol,PromoUser Subrek channel baru aku promouser subrek channel baru aku
+sample_spam_non_judol_047,LapakMurah,user47@example.com,45000,QRIS,Saweria,Mampir ke lapak aku,spam_non_judol,LapakMurah Mampir ke lapak aku lapakmurah mampir ke lapak aku
+sample_spam_non_judol_048,SubrekAku,user48@example.com,50000,QRIS,Saweria,Promo produk lokal,spam_non_judol,SubrekAku Promo produk lokal subrekaku promo produk lokal
+sample_spam_non_judol_049,JualCepat,user49@example.com,55000,QRIS,Saweria,Cek link bio aku,spam_non_judol,JualCepat Cek link bio aku jualcepat cek link bio aku
+sample_suspicious_judol_000,admininfo,user0@example.com,10000,QRIS,Saweria,jam gacor malam ini,suspicious_judol,admininfo jam gacor malam ini admininfo jam gacor malam ini
+sample_suspicious_judol_001,polaUpdate,user1@example.com,15000,QRIS,Saweria,pola admin terbaru,suspicious_judol,polaUpdate pola admin terbaru polaupdate pola admin terbaru
+sample_suspicious_judol_002,cuanMalam,user2@example.com,20000,QRIS,Saweria,rtp tinggi,suspicious_judol,cuanMalam rtp tinggi cuanmalam rtp tinggi
+sample_suspicious_judol_003,viewer88,user3@example.com,25000,QRIS,Saweria,gas sekarang,suspicious_judol,viewer88 gas sekarang viewer88 gas sekarang
+sample_suspicious_judol_004,bocoranNow,user4@example.com,30000,QRIS,Saweria,bocoran admin hari ini,suspicious_judol,bocoranNow bocoran admin hari ini bocorannow bocoran admin hari ini
+sample_suspicious_judol_005,admininfo,user5@example.com,35000,QRIS,Saweria,cuan cepat malam ini,suspicious_judol,admininfo cuan cepat malam ini admininfo cuan cepat malam ini
+sample_suspicious_judol_006,polaUpdate,user6@example.com,40000,QRIS,Saweria,info maxwin terbaru,suspicious_judol,polaUpdate info maxwin terbaru polaupdate info maxwin terbaru
+sample_suspicious_judol_007,cuanMalam,user7@example.com,45000,QRIS,Saweria,pola scatter katanya bagus,suspicious_judol,cuanMalam pola scatter katanya bagus cuanmalam pola scatter katanya bagus
+sample_suspicious_judol_008,viewer88,user8@example.com,50000,QRIS,Saweria,admin kasih bocoran,suspicious_judol,viewer88 admin kasih bocoran viewer88 admin kasih bocoran
+sample_suspicious_judol_009,bocoranNow,user9@example.com,55000,QRIS,Saweria,depo kecil bisa cuan,suspicious_judol,bocoranNow depo kecil bisa cuan bocorannow depo kecil bisa cuan
+sample_suspicious_judol_010,admininfo,user10@example.com,10000,QRIS,Saweria,pola terbaik malam ini,suspicious_judol,admininfo pola terbaik malam ini admininfo pola terbaik malam ini
+sample_suspicious_judol_011,polaUpdate,user11@example.com,15000,QRIS,Saweria,info pola admin terbaru,suspicious_judol,polaUpdate info pola admin terbaru polaupdate info pola admin terbaru
+sample_suspicious_judol_012,cuanMalam,user12@example.com,20000,QRIS,Saweria,jam gacor paling ramai,suspicious_judol,cuanMalam jam gacor paling ramai cuanmalam jam gacor paling ramai
+sample_suspicious_judol_013,viewer88,user13@example.com,25000,QRIS,Saweria,jam gacor malam ini,suspicious_judol,viewer88 jam gacor malam ini viewer88 jam gacor malam ini
+sample_suspicious_judol_014,bocoranNow,user14@example.com,30000,QRIS,Saweria,pola admin terbaru,suspicious_judol,bocoranNow pola admin terbaru bocorannow pola admin terbaru
+sample_suspicious_judol_015,admininfo,user15@example.com,35000,QRIS,Saweria,rtp tinggi,suspicious_judol,admininfo rtp tinggi admininfo rtp tinggi
+sample_suspicious_judol_016,polaUpdate,user16@example.com,40000,QRIS,Saweria,gas sekarang,suspicious_judol,polaUpdate gas sekarang polaupdate gas sekarang
+sample_suspicious_judol_017,cuanMalam,user17@example.com,45000,QRIS,Saweria,bocoran admin hari ini,suspicious_judol,cuanMalam bocoran admin hari ini cuanmalam bocoran admin hari ini
+sample_suspicious_judol_018,viewer88,user18@example.com,50000,QRIS,Saweria,cuan cepat malam ini,suspicious_judol,viewer88 cuan cepat malam ini viewer88 cuan cepat malam ini
+sample_suspicious_judol_019,bocoranNow,user19@example.com,55000,QRIS,Saweria,info maxwin terbaru,suspicious_judol,bocoranNow info maxwin terbaru bocorannow info maxwin terbaru
+sample_suspicious_judol_020,admininfo,user20@example.com,10000,QRIS,Saweria,pola scatter katanya bagus,suspicious_judol,admininfo pola scatter katanya bagus admininfo pola scatter katanya bagus
+sample_suspicious_judol_021,polaUpdate,user21@example.com,15000,QRIS,Saweria,admin kasih bocoran,suspicious_judol,polaUpdate admin kasih bocoran polaupdate admin kasih bocoran
+sample_suspicious_judol_022,cuanMalam,user22@example.com,20000,QRIS,Saweria,depo kecil bisa cuan,suspicious_judol,cuanMalam depo kecil bisa cuan cuanmalam depo kecil bisa cuan
+sample_suspicious_judol_023,viewer88,user23@example.com,25000,QRIS,Saweria,pola terbaik malam ini,suspicious_judol,viewer88 pola terbaik malam ini viewer88 pola terbaik malam ini
+sample_suspicious_judol_024,bocoranNow,user24@example.com,30000,QRIS,Saweria,info pola admin terbaru,suspicious_judol,bocoranNow info pola admin terbaru bocorannow info pola admin terbaru
+sample_suspicious_judol_025,admininfo,user25@example.com,35000,QRIS,Saweria,jam gacor paling ramai,suspicious_judol,admininfo jam gacor paling ramai admininfo jam gacor paling ramai
+sample_suspicious_judol_026,polaUpdate,user26@example.com,40000,QRIS,Saweria,jam gacor malam ini,suspicious_judol,polaUpdate jam gacor malam ini polaupdate jam gacor malam ini
+sample_suspicious_judol_027,cuanMalam,user27@example.com,45000,QRIS,Saweria,pola admin terbaru,suspicious_judol,cuanMalam pola admin terbaru cuanmalam pola admin terbaru
+sample_suspicious_judol_028,viewer88,user28@example.com,50000,QRIS,Saweria,rtp tinggi,suspicious_judol,viewer88 rtp tinggi viewer88 rtp tinggi
+sample_suspicious_judol_029,bocoranNow,user29@example.com,55000,QRIS,Saweria,gas sekarang,suspicious_judol,bocoranNow gas sekarang bocorannow gas sekarang
+sample_suspicious_judol_030,admininfo,user30@example.com,10000,QRIS,Saweria,bocoran admin hari ini,suspicious_judol,admininfo bocoran admin hari ini admininfo bocoran admin hari ini
+sample_suspicious_judol_031,polaUpdate,user31@example.com,15000,QRIS,Saweria,cuan cepat malam ini,suspicious_judol,polaUpdate cuan cepat malam ini polaupdate cuan cepat malam ini
+sample_suspicious_judol_032,cuanMalam,user32@example.com,20000,QRIS,Saweria,info maxwin terbaru,suspicious_judol,cuanMalam info maxwin terbaru cuanmalam info maxwin terbaru
+sample_suspicious_judol_033,viewer88,user33@example.com,25000,QRIS,Saweria,pola scatter katanya bagus,suspicious_judol,viewer88 pola scatter katanya bagus viewer88 pola scatter katanya bagus
+sample_suspicious_judol_034,bocoranNow,user34@example.com,30000,QRIS,Saweria,admin kasih bocoran,suspicious_judol,bocoranNow admin kasih bocoran bocorannow admin kasih bocoran
+sample_suspicious_judol_035,admininfo,user35@example.com,35000,QRIS,Saweria,depo kecil bisa cuan,suspicious_judol,admininfo depo kecil bisa cuan admininfo depo kecil bisa cuan
+sample_suspicious_judol_036,polaUpdate,user36@example.com,40000,QRIS,Saweria,pola terbaik malam ini,suspicious_judol,polaUpdate pola terbaik malam ini polaupdate pola terbaik malam ini
+sample_suspicious_judol_037,cuanMalam,user37@example.com,45000,QRIS,Saweria,info pola admin terbaru,suspicious_judol,cuanMalam info pola admin terbaru cuanmalam info pola admin terbaru
+sample_suspicious_judol_038,viewer88,user38@example.com,50000,QRIS,Saweria,jam gacor paling ramai,suspicious_judol,viewer88 jam gacor paling ramai viewer88 jam gacor paling ramai
+sample_suspicious_judol_039,bocoranNow,user39@example.com,55000,QRIS,Saweria,jam gacor malam ini,suspicious_judol,bocoranNow jam gacor malam ini bocorannow jam gacor malam ini
+sample_suspicious_judol_040,admininfo,user40@example.com,10000,QRIS,Saweria,pola admin terbaru,suspicious_judol,admininfo pola admin terbaru admininfo pola admin terbaru
+sample_suspicious_judol_041,polaUpdate,user41@example.com,15000,QRIS,Saweria,rtp tinggi,suspicious_judol,polaUpdate rtp tinggi polaupdate rtp tinggi
+sample_suspicious_judol_042,cuanMalam,user42@example.com,20000,QRIS,Saweria,gas sekarang,suspicious_judol,cuanMalam gas sekarang cuanmalam gas sekarang
+sample_suspicious_judol_043,viewer88,user43@example.com,25000,QRIS,Saweria,bocoran admin hari ini,suspicious_judol,viewer88 bocoran admin hari ini viewer88 bocoran admin hari ini
+sample_suspicious_judol_044,bocoranNow,user44@example.com,30000,QRIS,Saweria,cuan cepat malam ini,suspicious_judol,bocoranNow cuan cepat malam ini bocorannow cuan cepat malam ini
+sample_suspicious_judol_045,admininfo,user45@example.com,35000,QRIS,Saweria,info maxwin terbaru,suspicious_judol,admininfo info maxwin terbaru admininfo info maxwin terbaru
+sample_suspicious_judol_046,polaUpdate,user46@example.com,40000,QRIS,Saweria,pola scatter katanya bagus,suspicious_judol,polaUpdate pola scatter katanya bagus polaupdate pola scatter katanya bagus
+sample_suspicious_judol_047,cuanMalam,user47@example.com,45000,QRIS,Saweria,admin kasih bocoran,suspicious_judol,cuanMalam admin kasih bocoran cuanmalam admin kasih bocoran
+sample_suspicious_judol_048,viewer88,user48@example.com,50000,QRIS,Saweria,depo kecil bisa cuan,suspicious_judol,viewer88 depo kecil bisa cuan viewer88 depo kecil bisa cuan
+sample_suspicious_judol_049,bocoranNow,user49@example.com,55000,QRIS,Saweria,pola terbaik malam ini,suspicious_judol,bocoranNow pola terbaik malam ini bocorannow pola terbaik malam ini
+sample_explicit_judol_000,kantorbola88,user0@example.com,10000,QRIS,Saweria,slot gacor rtp 98%,explicit_judol,kantorbola88 slot gacor rtp 98% kantorbola88 slot gacor rtp 98%
+sample_explicit_judol_001,situs88info,user1@example.com,15000,QRIS,Saweria,deposit sekarang bonus new member,explicit_judol,situs88info deposit sekarang bonus new member situs88info deposit sekarang bonus new member
+sample_explicit_judol_002,max88team,user2@example.com,20000,QRIS,Saweria,situs88 dot com gacor,explicit_judol,max88team situs88 dot com gacor max88team situs88 dot com gacor
+sample_explicit_judol_003,slot88news,user3@example.com,25000,QRIS,Saweria,bola88 maxwin malam ini,explicit_judol,slot88news bola88 maxwin malam ini slot88news bola88 maxwin malam ini
+sample_explicit_judol_004,provider88,user4@example.com,30000,QRIS,Saweria,scatter hitam auto wd,explicit_judol,provider88 scatter hitam auto wd provider88 scatter hitam auto wd
+sample_explicit_judol_005,kantorbola88,user5@example.com,35000,QRIS,Saweria,sl0t g4c0r rtp 98%,explicit_judol,kantorbola88 sl0t g4c0r rtp 98% kantorbola88 slot gacor rtp 98%
+sample_explicit_judol_006,situs88info,user6@example.com,40000,QRIS,Saweria,m4xw1n malam ini,explicit_judol,situs88info m4xw1n malam ini situs88info maxwin malam ini
+sample_explicit_judol_007,max88team,user7@example.com,45000,QRIS,Saweria,s l o t g a c o r,explicit_judol,max88team s l o t g a c o r max88team slotgacor
+sample_explicit_judol_008,slot88news,user8@example.com,50000,QRIS,Saweria,ｓｌｏｔ ｇａｃｏｒ,explicit_judol,slot88news ｓｌｏｔ ｇａｃｏｒ slot88news slot gacor
+sample_explicit_judol_009,provider88,user9@example.com,55000,QRIS,Saweria,gÃcÖr m4xw1n,explicit_judol,provider88 gÃcÖr m4xw1n provider88 gacor maxwin
+sample_explicit_judol_010,kantorbola88,user10@example.com,10000,QRIS,Saweria,bocoran adm1n h4ri ini,explicit_judol,kantorbola88 bocoran adm1n h4ri ini kantorbola88 bocoran admin hari ini
+sample_explicit_judol_011,situs88info,user11@example.com,15000,QRIS,Saweria,provider88 dot com bonus rtp 97%,explicit_judol,situs88info provider88 dot com bonus rtp 97% situs88info provider88 dot com bonus rtp 97%
+sample_explicit_judol_012,max88team,user12@example.com,20000,QRIS,Saweria,🅿🅾🅻🅰 🆃🅴🆁🅱🅰🅸🅺 🅷🅰🅽🆈🅰 🅳🅸 🅽🅴🆃888,explicit_judol,max88team 🅿🅾🅻🅰 🆃🅴🆁🅱🅰🅸🅺 🅷🅰🅽🆈🅰 🅳🅸 🅽🅴🆃888 max88team pola terbaik hanya di net888
+sample_explicit_judol_013,slot88news,user13@example.com,25000,QRIS,Saweria,🆂🅻🅾🆃 🅶🅰🅲🅾🆁 🆁🆃🅿 98%,explicit_judol,slot88news 🆂🅻🅾🆃 🅶🅰🅲🅾🆁 🆁🆃🅿 98% slot88news slot gacor rtp 98%
+sample_explicit_judol_014,provider88,user14@example.com,30000,QRIS,Saweria,🅱🅾🅲🅾🆁🅰🅽 🅰🅳🅼🅸🅽 🆅🅸🅿777,explicit_judol,provider88 🅱🅾🅲🅾🆁🅰🅽 🅰🅳🅼🅸🅽 🆅🅸🅿777 provider88 bocoran admin vip777
+sample_explicit_judol_015,kantorbola88,user15@example.com,35000,QRIS,Saweria,p-o-l-a terbaik hanya di n-e-t888,explicit_judol,kantorbola88 p-o-l-a terbaik hanya di n-e-t888 kantorbola88 pola terbaik hanya di net888
+sample_explicit_judol_016,situs88info,user16@example.com,40000,QRIS,Saweria,s.l.o.t g.a.c.o.r r.t.p 99%,explicit_judol,situs88info s.l.o.t g.a.c.o.r r.t.p 99% situs88info slot gacor rtp 99%
+sample_explicit_judol_017,max88team,user17@example.com,45000,QRIS,Saweria,😺🐳 ᵖㄖｌⓐ tＥŘ๒ΔƗк ĦⒶ几𝐘𝔸 ᗪⒾ ηᵉ𝓽➇８❽ 🐻🐼,explicit_judol,max88team 😺🐳 ᵖㄖｌⓐ tＥŘ๒ΔƗк ĦⒶ几𝐘𝔸 ᗪⒾ ηᵉ𝓽➇８❽ 🐻🐼 max88team pola terbaik hanya di net888
+sample_explicit_judol_018,slot88news,user18@example.com,50000,QRIS,Saweria,ᵖㄖｌⓐ terbaik hanya di ηᵉ𝓽➇８❽,explicit_judol,slot88news ᵖㄖｌⓐ terbaik hanya di ηᵉ𝓽➇８❽ slot88news pola terbaik hanya di net888
+sample_explicit_judol_019,provider88,user19@example.com,55000,QRIS,Saweria,slot gacor rtp 98%,explicit_judol,provider88 slot gacor rtp 98% provider88 slot gacor rtp 98%
+sample_explicit_judol_020,kantorbola88,user20@example.com,10000,QRIS,Saweria,deposit sekarang bonus new member,explicit_judol,kantorbola88 deposit sekarang bonus new member kantorbola88 deposit sekarang bonus new member
+sample_explicit_judol_021,situs88info,user21@example.com,15000,QRIS,Saweria,situs88 dot com gacor,explicit_judol,situs88info situs88 dot com gacor situs88info situs88 dot com gacor
+sample_explicit_judol_022,max88team,user22@example.com,20000,QRIS,Saweria,bola88 maxwin malam ini,explicit_judol,max88team bola88 maxwin malam ini max88team bola88 maxwin malam ini
+sample_explicit_judol_023,slot88news,user23@example.com,25000,QRIS,Saweria,scatter hitam auto wd,explicit_judol,slot88news scatter hitam auto wd slot88news scatter hitam auto wd
+sample_explicit_judol_024,provider88,user24@example.com,30000,QRIS,Saweria,sl0t g4c0r rtp 98%,explicit_judol,provider88 sl0t g4c0r rtp 98% provider88 slot gacor rtp 98%
+sample_explicit_judol_025,kantorbola88,user25@example.com,35000,QRIS,Saweria,m4xw1n malam ini,explicit_judol,kantorbola88 m4xw1n malam ini kantorbola88 maxwin malam ini
+sample_explicit_judol_026,situs88info,user26@example.com,40000,QRIS,Saweria,s l o t g a c o r,explicit_judol,situs88info s l o t g a c o r situs88info slotgacor
+sample_explicit_judol_027,max88team,user27@example.com,45000,QRIS,Saweria,ｓｌｏｔ ｇａｃｏｒ,explicit_judol,max88team ｓｌｏｔ ｇａｃｏｒ max88team slot gacor
+sample_explicit_judol_028,slot88news,user28@example.com,50000,QRIS,Saweria,gÃcÖr m4xw1n,explicit_judol,slot88news gÃcÖr m4xw1n slot88news gacor maxwin
+sample_explicit_judol_029,provider88,user29@example.com,55000,QRIS,Saweria,bocoran adm1n h4ri ini,explicit_judol,provider88 bocoran adm1n h4ri ini provider88 bocoran admin hari ini
+sample_explicit_judol_030,kantorbola88,user30@example.com,10000,QRIS,Saweria,provider88 dot com bonus rtp 97%,explicit_judol,kantorbola88 provider88 dot com bonus rtp 97% kantorbola88 provider88 dot com bonus rtp 97%
+sample_explicit_judol_031,situs88info,user31@example.com,15000,QRIS,Saweria,🅿🅾🅻🅰 🆃🅴🆁🅱🅰🅸🅺 🅷🅰🅽🆈🅰 🅳🅸 🅽🅴🆃888,explicit_judol,situs88info 🅿🅾🅻🅰 🆃🅴🆁🅱🅰🅸🅺 🅷🅰🅽🆈🅰 🅳🅸 🅽🅴🆃888 situs88info pola terbaik hanya di net888
+sample_explicit_judol_032,max88team,user32@example.com,20000,QRIS,Saweria,🆂🅻🅾🆃 🅶🅰🅲🅾🆁 🆁🆃🅿 98%,explicit_judol,max88team 🆂🅻🅾🆃 🅶🅰🅲🅾🆁 🆁🆃🅿 98% max88team slot gacor rtp 98%
+sample_explicit_judol_033,slot88news,user33@example.com,25000,QRIS,Saweria,🅱🅾🅲🅾🆁🅰🅽 🅰🅳🅼🅸🅽 🆅🅸🅿777,explicit_judol,slot88news 🅱🅾🅲🅾🆁🅰🅽 🅰🅳🅼🅸🅽 🆅🅸🅿777 slot88news bocoran admin vip777
+sample_explicit_judol_034,provider88,user34@example.com,30000,QRIS,Saweria,p-o-l-a terbaik hanya di n-e-t888,explicit_judol,provider88 p-o-l-a terbaik hanya di n-e-t888 provider88 pola terbaik hanya di net888
+sample_explicit_judol_035,kantorbola88,user35@example.com,35000,QRIS,Saweria,s.l.o.t g.a.c.o.r r.t.p 99%,explicit_judol,kantorbola88 s.l.o.t g.a.c.o.r r.t.p 99% kantorbola88 slot gacor rtp 99%
+sample_explicit_judol_036,situs88info,user36@example.com,40000,QRIS,Saweria,😺🐳 ᵖㄖｌⓐ tＥŘ๒ΔƗк ĦⒶ几𝐘𝔸 ᗪⒾ ηᵉ𝓽➇８❽ 🐻🐼,explicit_judol,situs88info 😺🐳 ᵖㄖｌⓐ tＥŘ๒ΔƗк ĦⒶ几𝐘𝔸 ᗪⒾ ηᵉ𝓽➇８❽ 🐻🐼 situs88info pola terbaik hanya di net888
+sample_explicit_judol_037,max88team,user37@example.com,45000,QRIS,Saweria,ᵖㄖｌⓐ terbaik hanya di ηᵉ𝓽➇８❽,explicit_judol,max88team ᵖㄖｌⓐ terbaik hanya di ηᵉ𝓽➇８❽ max88team pola terbaik hanya di net888
+sample_explicit_judol_038,slot88news,user38@example.com,50000,QRIS,Saweria,slot gacor rtp 98%,explicit_judol,slot88news slot gacor rtp 98% slot88news slot gacor rtp 98%
+sample_explicit_judol_039,provider88,user39@example.com,55000,QRIS,Saweria,deposit sekarang bonus new member,explicit_judol,provider88 deposit sekarang bonus new member provider88 deposit sekarang bonus new member
+sample_explicit_judol_040,kantorbola88,user40@example.com,10000,QRIS,Saweria,situs88 dot com gacor,explicit_judol,kantorbola88 situs88 dot com gacor kantorbola88 situs88 dot com gacor
+sample_explicit_judol_041,situs88info,user41@example.com,15000,QRIS,Saweria,bola88 maxwin malam ini,explicit_judol,situs88info bola88 maxwin malam ini situs88info bola88 maxwin malam ini
+sample_explicit_judol_042,max88team,user42@example.com,20000,QRIS,Saweria,scatter hitam auto wd,explicit_judol,max88team scatter hitam auto wd max88team scatter hitam auto wd
+sample_explicit_judol_043,slot88news,user43@example.com,25000,QRIS,Saweria,sl0t g4c0r rtp 98%,explicit_judol,slot88news sl0t g4c0r rtp 98% slot88news slot gacor rtp 98%
+sample_explicit_judol_044,provider88,user44@example.com,30000,QRIS,Saweria,m4xw1n malam ini,explicit_judol,provider88 m4xw1n malam ini provider88 maxwin malam ini
+sample_explicit_judol_045,kantorbola88,user45@example.com,35000,QRIS,Saweria,s l o t g a c o r,explicit_judol,kantorbola88 s l o t g a c o r kantorbola88 slotgacor
+sample_explicit_judol_046,situs88info,user46@example.com,40000,QRIS,Saweria,ｓｌｏｔ ｇａｃｏｒ,explicit_judol,situs88info ｓｌｏｔ ｇａｃｏｒ situs88info slot gacor
+sample_explicit_judol_047,max88team,user47@example.com,45000,QRIS,Saweria,gÃcÖr m4xw1n,explicit_judol,max88team gÃcÖr m4xw1n max88team gacor maxwin
+sample_explicit_judol_048,slot88news,user48@example.com,50000,QRIS,Saweria,bocoran adm1n h4ri ini,explicit_judol,slot88news bocoran adm1n h4ri ini slot88news bocoran admin hari ini
+sample_explicit_judol_049,provider88,user49@example.com,55000,QRIS,Saweria,provider88 dot com bonus rtp 97%,explicit_judol,provider88 provider88 dot com bonus rtp 97% provider88 provider88 dot com bonus rtp 97%

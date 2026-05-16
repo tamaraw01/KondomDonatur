@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: kondomdonatur-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python scripts/migrate.py && python scripts/seed_db.py
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: MODEL_PATH
+        value: models/judol_detector.pkl
+      - key: DEFAULT_STREAMER_ID
+        value: streamer_001
+      - key: DEFAULT_FILTER_MODE
+        value: sensor
+
