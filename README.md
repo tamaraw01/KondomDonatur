@@ -79,7 +79,7 @@ Script ini akan membuat `data/sample/donation_sample.csv` jika belum ada, melati
 models/judol_detector.pkl
 ```
 
-Dataset sintetis dibuat seimbang untuk 4 kelas dengan 10.000 baris unik. Variasinya mencakup fancy Unicode, huruf hias, confusable lintas script, leetspeak, zero-width character, domain tersamarkan, angka hias, pemisah simbol, emoji wrapper yang aman, spam non-judol dengan URL legal/sintetis, dan pola provider placeholder seperti `net888`/`vip777`.
+Dataset sintetis dibuat seimbang untuk 4 kelas dengan 10.000 baris unik. Variasinya mencakup fancy Unicode, huruf hias, confusable lintas script, leetspeak, zero-width character, domain tersamarkan, angka hias, pemisah simbol, emoji wrapper yang aman, spam non-judol dengan URL legal/sintetis, bahasa gaul/non-baku live chat seperti `wkwk`, `ngab`, `cuy`, `ggwp`, `gaskeun`, `sabi`, `kuy`, `bgt`, `udh`, `gk/ga`, dan pola provider placeholder seperti `net888`/`vip777`.
 
 ## Jalankan API
 

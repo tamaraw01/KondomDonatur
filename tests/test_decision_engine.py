@@ -57,3 +57,37 @@ def test_benign_emoji_message_keeps_original_display():
     )
     assert decision["label_multiclass"] == "benign"
     assert decision["display_message"] == "Semangat bang 😺🐳"
+
+
+def test_gaul_benign_chat_does_not_get_masked():
+    decision = make_decision(
+        {
+            "sender_name_raw": "ngabSantuy",
+            "sender_email_raw": "viewer@example.com",
+            "amount": 20000,
+            "payment_method": "QRIS",
+            "platform": "Kondomatur",
+            "message_raw": "ggwp bang no debat, gaskeun mabar lagi ygy",
+        },
+        "sensor",
+    )
+    assert decision["label_multiclass"] == "benign"
+    assert decision["action_label"] == "allow"
+    assert decision["display_message"] == "ggwp bang no debat, gaskeun mabar lagi ygy"
+
+
+def test_gaul_non_judol_promo_goes_to_review_not_mask():
+    decision = make_decision(
+        {
+            "sender_name_raw": "LapakMurah",
+            "sender_email_raw": "seller@example.com",
+            "amount": 20000,
+            "payment_method": "QRIS",
+            "platform": "Kondomatur",
+            "message_raw": "spill katalog baru cuy gercep ya",
+        },
+        "sensor",
+    )
+    assert decision["label_multiclass"] == "spam_non_judol"
+    assert decision["action_label"] == "review"
+    assert decision["display_message"] == "spill katalog baru cuy gercep ya"

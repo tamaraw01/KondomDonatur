@@ -23,6 +23,33 @@ def _stronger_label(model_label: str, rule_label: str) -> str:
     return model_label
 
 
+def _has_hard_judol_evidence(features: dict[str, Any]) -> bool:
+    return any(
+        bool(features.get(key))
+        for key in [
+            "contains_gambling_keyword",
+            "contains_provider_keyword",
+            "contains_rtp_pattern",
+            "contains_percentage_claim",
+            "contains_url",
+            "contains_obfuscated_url",
+        ]
+    ) or float(features.get("suspicious_text_char_ratio") or 0) >= 0.15
+
+
+def resolve_label(model_result: dict[str, Any], rule_label: str, features: dict[str, Any]) -> str:
+    model_label = model_result.get("label_multiclass", "benign")
+    confidence = float(model_result.get("confidence") or 0)
+    if (
+        model_label in {"suspicious_judol", "explicit_judol"}
+        and rule_label in {"benign", "spam_non_judol"}
+        and confidence < 0.65
+        and not _has_hard_judol_evidence(features)
+    ):
+        return rule_label
+    return _stronger_label(model_label, rule_label)
+
+
 def build_explanation(features: dict[str, Any], label: str) -> str:
     reasons: list[str] = []
     if features.get("contains_gambling_keyword"):
@@ -55,7 +82,7 @@ def make_decision(input_data: dict[str, Any], filter_mode: str = "sensor") -> di
     features = extract_rule_features(sender_name_raw, message_raw, sender_email_raw)
     rule_label = rule_based_label(features)
     model_result = predict_label(sender_name_raw, message_raw, sender_email_raw)
-    label = _stronger_label(model_result.get("label_multiclass", "benign"), rule_label)
+    label = resolve_label(model_result, rule_label, features)
     risk = calculate_risk_score(model_result, rule_label, features, amount, payment_method)
     risk_score = risk["risk_score"]
 

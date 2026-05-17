@@ -37,3 +37,13 @@ def test_mixed_emoji_confusable_text_provider_pattern_is_explicit_judol():
 
 def test_plain_emoji_can_remain_benign():
     assert label_for("Budi", "Semangat bang 😺🐳") == "benign"
+
+
+def test_benign_slang_live_chat_stays_benign():
+    assert label_for("ngabSantuy", "wkwk smngt bang mantul mainnya cuy") == "benign"
+    assert label_for("mabarCrew", "ggwp bang no debat, gaskeun mabar lagi ygy") == "benign"
+
+
+def test_gaul_non_judol_promo_detected_as_spam_not_judol():
+    assert label_for("LapakMurah", "spill katalog baru cuy gercep ya") == "spam_non_judol"
+    assert label_for("TokoAyu", "follow ig gw ya bestie, link di bio no tipu-tipu") == "spam_non_judol"

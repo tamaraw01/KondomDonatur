@@ -190,6 +190,88 @@ BENIGN_CONTEXTS = [
     "lanjut konten positif",
 ]
 
+BENIGN_GAUL_BASES = [
+    "smngt bang wkwk",
+    "semangatt ngab",
+    "mantul mainnya cuy",
+    "mantep bet clutch tadi",
+    "ggwp bang no debat",
+    "nt bang next menang",
+    "gokil sih gameplay lu",
+    "anjay keren bgt",
+    "pecah banget live hari ini",
+    "seru bet nontonnya",
+    "auto ngakak pas tadi",
+    "relate bgt sama ceritanya",
+    "santuy aja bang",
+    "kuy lanjut satu match lagi",
+    "gaskeun mabar kapan-kapan",
+    "sabi request lagu ga",
+    "bestie streamnya ramein dong",
+    "makasih udh nemenin malem ini",
+    "thx bang udah live",
+    "btw audio lu udah enak",
+    "gw dukung terus bang",
+    "gua nonton dari awal nih",
+    "lo keren bgt pas clutch",
+    "jgn lupa makan ya",
+    "gpp kalah yang penting fun",
+    "cape ngakak liat chat",
+    "gabut jadi nonton live ini",
+    "mager tapi tetep nonton",
+    "spill build item dong",
+    "kok bisa jago gitu sih",
+    "wkwkwk ngakak parah",
+    "skuy ranked lagi",
+    "lag dikit tapi aman",
+    "ping aman bang lanjut",
+    "carry terus bang",
+    "ez tapi tetep humble",
+    "noob friendly banget kontennya",
+    "ciye menang terus",
+    "afk bentar tetep support",
+]
+
+BENIGN_GAUL_CONTEXTS = [
+    "",
+    "asli ini seru",
+    "ga boong",
+    "beneran bagus",
+    "ygy",
+    "lah kok bisa",
+    "deh mantap",
+    "nih buat kopi",
+    "aja dulu",
+    "dong baca chat",
+    "plis lanjut",
+    "cmiiw ya",
+    "otw nonton sampe selesai",
+    "no debat sih",
+    "lowkey suka konten ini",
+    "vibesnya enak",
+    "random tapi lucu",
+]
+
+BENIGN_MISSPELLINGS = {
+    "semangat": ["smngt", "smangat", "semangatt"],
+    "banget": ["bgt", "bet", "bangett"],
+    "mantap": ["mantul", "mantep", "mantapp"],
+    "terima kasih": ["makasih", "makasihh", "thanks", "thx"],
+    "sudah": ["udah", "udh"],
+    "tidak": ["ga", "gak", "gk", "nggak"],
+    "jangan": ["jgn"],
+    "yang": ["yg"],
+    "buat": ["bwt"],
+    "aku": ["gw", "gue", "gua"],
+    "kamu": ["lu", "lo", "elu"],
+    "main": ["maen"],
+    "seru": ["seruuu"],
+    "lanjut": ["lanjutt", "gaskeun", "gaskan"],
+}
+
+CHAT_LAUGHTER = ["wkwk", "wkwkwk", "haha", "hehe", "xixi"]
+CHAT_PARTICLES = ["nih", "dong", "sih", "deh", "lah", "ya", "ygy", "cuy", "ngab", "bro", "bestie"]
+
 SPAM_BASES = [
     "Follow IG aku ya",
     "Subscribe channel aku",
@@ -224,6 +306,44 @@ SPAM_CONTEXTS = [
     "garansi toko",
     "gratis ongkir wilayah tertentu",
     "pakai kode hemat",
+]
+
+SPAM_GAUL_BASES = [
+    "follow ig gw ya bestie",
+    "subrek channel gue dong",
+    "cek toko aku nih",
+    "spill katalog baru cuy",
+    "mampir lapak gw bentar",
+    "open jasa edit video nih",
+    "diskon tipis buat chat",
+    "promo skincare buat bestie",
+    "cek link bio ya",
+    "dm gue kalau mau order",
+    "jual voucher game legal",
+    "open commission layout stream",
+    "katalog baju baru drop",
+    "flash sale sepatu sabi dicek",
+    "kelas desain online buka lagi",
+    "preorder casing hp lucu",
+    "mau barter akun game aman",
+    "top up legal bisa dm",
+    "thrift murah merapat",
+    "template overlay stream ready",
+]
+
+SPAM_GAUL_CONTEXTS = [
+    "",
+    "harga santuy",
+    "stok dikit lagi",
+    "gercep ya",
+    "yang minat dm",
+    "link di bio",
+    "no tipu-tipu",
+    "testi ada",
+    "gratis ongkir nih",
+    "pakai kode hemat",
+    "bisa nego tipis",
+    "buat support UMKM",
 ]
 
 SUSPICIOUS_BASES = [
@@ -405,6 +525,26 @@ def wrap_message(text: str, index: int) -> str:
     return f"{prefix}{text}{suffix}"
 
 
+def informalize_text(text: str, offset: int = 0) -> str:
+    value = text
+    for step, (formal, variants) in enumerate(BENIGN_MISSPELLINGS.items()):
+        if formal in value.lower() and (offset + step) % 2 == 0:
+            replacement = variants[(offset + step) % len(variants)]
+            value = value.replace(formal, replacement).replace(formal.capitalize(), replacement.capitalize())
+    return value
+
+
+def add_chat_texture(text: str, index: int) -> str:
+    parts = [text]
+    if index % 3 == 0:
+        parts.insert(0, CHAT_LAUGHTER[index % len(CHAT_LAUGHTER)])
+    if index % 4 == 0:
+        parts.append(CHAT_PARTICLES[index % len(CHAT_PARTICLES)])
+    if index % 10 == 0:
+        parts.append(CHAT_LAUGHTER[(index + 2) % len(CHAT_LAUGHTER)])
+    return " ".join(part for part in parts if part).strip()
+
+
 OBFUSCATORS: list[Callable[[str, int], str]] = [
     lambda text, index: text,
     lambda text, index: fullwidth_text(text),
@@ -423,9 +563,15 @@ OBFUSCATORS: list[Callable[[str, int], str]] = [
 
 
 def benign_message(index: int) -> str:
-    base = _pick(BENIGN_BASES, index, 7)
-    context = _pick(BENIGN_CONTEXTS, index, 5)
+    if index % 2 == 0:
+        base = _pick(BENIGN_GAUL_BASES, index, 7)
+        context = _pick(BENIGN_GAUL_CONTEXTS, index, 5)
+    else:
+        base = informalize_text(_pick(BENIGN_BASES, index, 7), index)
+        context = informalize_text(_pick(BENIGN_CONTEXTS, index, 5), index + 3)
     message = f"{base} {context}".strip()
+    if index % 5 == 0:
+        message = add_chat_texture(message, index)
     if index % 6 == 0:
         message = wrap_message(message, index)
     if index % 11 == 0:
@@ -436,9 +582,15 @@ def benign_message(index: int) -> str:
 
 
 def spam_message(index: int) -> str:
-    base = _pick(SPAM_BASES, index, 5)
-    context = _pick(SPAM_CONTEXTS, index, 7)
+    if index % 2 == 0:
+        base = _pick(SPAM_GAUL_BASES, index, 5)
+        context = _pick(SPAM_GAUL_CONTEXTS, index, 7)
+    else:
+        base = informalize_text(_pick(SPAM_BASES, index, 5), index)
+        context = informalize_text(_pick(SPAM_CONTEXTS, index, 7), index + 5)
     message = f"{base} {context}".strip()
+    if index % 8 == 0:
+        message = add_chat_texture(message, index)
     if index % 9 == 0:
         message = f"{message} https://contoh-toko{index % 37}.id"
     if index % 13 == 0:
