@@ -1,4 +1,4 @@
-# Demo Script KondomDonatur
+# Demo Script Kondomatur
 
 Gunakan `/streamer` untuk memilih mode, lalu buka link `/donate/{streamer_id}`. Setelah form donasi dikirim, lanjutkan ke `/checkout/{payment_intent_id}` untuk menekan tombol bayar sandbox.
 

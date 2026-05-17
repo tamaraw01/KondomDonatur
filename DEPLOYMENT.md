@@ -1,4 +1,4 @@
-# Deployment KondomDonatur
+# Deployment Kondomatur
 
 Panduan ini menyiapkan backend FastAPI di Render/Railway, database Supabase PostgreSQL, dan frontend demo statis di Vercel.
 
@@ -22,7 +22,7 @@ Jangan commit credential Supabase. Ambil `DATABASE_URL` dari Supabase Project Se
 
 1. Push repo ke GitHub.
 2. Buat Web Service baru di Render.
-3. Pilih repo KondomDonatur.
+3. Pilih repo Kondomatur.
 4. Build command:
 
 ```bash
@@ -132,7 +132,7 @@ Expected `/health`:
 ```json
 {
   "status": "ok",
-  "app": "KondomDonatur",
+  "app": "Kondomatur",
   "environment": "production",
   "model_available": true
 }

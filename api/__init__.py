@@ -1,2 +1,2 @@
-"""FastAPI package for KondomDonatur."""
+"""FastAPI package for Kondomatur."""
 

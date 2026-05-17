@@ -7,7 +7,7 @@ import streamlit as st
 
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 
-st.set_page_config(page_title="KondomDonatur - Overlay", page_icon="KD", layout="centered")
+st.set_page_config(page_title="Kondomatur - Overlay", page_icon="KT", layout="centered")
 
 st.markdown(
     """

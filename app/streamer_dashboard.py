@@ -21,7 +21,7 @@ def api_post(path: str, payload: dict):
     return response.json()
 
 
-st.set_page_config(page_title="KondomDonatur - Panel Streamer", page_icon="KD", layout="wide")
+st.set_page_config(page_title="Kondomatur - Panel Streamer", page_icon="KT", layout="wide")
 st.markdown(
     """
     <style>

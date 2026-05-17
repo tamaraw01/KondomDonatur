@@ -61,8 +61,8 @@ def apply_example(example_name: str) -> None:
         st.session_state[key] = value
 
 
-st.set_page_config(page_title="KondomDonatur - Donor Form", page_icon="KD", layout="centered")
-st.title("KondomDonatur")
+st.set_page_config(page_title="Kondomatur - Donor Form", page_icon="KT", layout="centered")
+st.title("Kondomatur")
 st.caption("Simulasi form donasi dan checkout sandbox untuk demo moderasi pesan live streaming.")
 
 cols = st.columns(5)

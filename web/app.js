@@ -2,11 +2,11 @@ const app = document.querySelector("#app");
 const DEFAULT_STREAMER_ID = "streamer_001";
 
 function apiBaseUrl() {
-  return (localStorage.getItem("kondomdonatur_api_url") || "http://localhost:8000").replace(/\/$/, "");
+  return (localStorage.getItem("kondomatur_api_url") || "http://localhost:8000").replace(/\/$/, "");
 }
 
 function setApiBaseUrl(value) {
-  localStorage.setItem("kondomdonatur_api_url", value.replace(/\/$/, ""));
+  localStorage.setItem("kondomatur_api_url", value.replace(/\/$/, ""));
 }
 
 function money(value) {
@@ -50,8 +50,8 @@ function layout(title, content) {
   app.innerHTML = `
     <header class="topbar">
       <a class="brand" href="/streamer">
-        <span class="brand-mark">KD</span>
-        <span>KondomDonatur</span>
+        <span class="brand-mark">KT</span>
+        <span>Kondomatur</span>
       </a>
       <nav>
         <a href="/streamer">Panel</a>
@@ -202,7 +202,7 @@ function renderDonate(streamerId = DEFAULT_STREAMER_ID) {
     const payload = Object.fromEntries(new FormData(event.currentTarget).entries());
     payload.amount = Number(payload.amount || 0);
     payload.payment_method = "QRIS";
-    payload.platform = "KondomDonatur";
+    payload.platform = "Kondomatur";
     const data = await api("/api/payment-intents", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

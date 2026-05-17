@@ -1,6 +1,6 @@
 # Run All
 
-Jalankan dari root project `KondomDonatur`:
+Jalankan dari root project `Kondomatur`:
 
 ```bash
 python scripts/init_db.py

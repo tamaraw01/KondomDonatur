@@ -41,7 +41,7 @@ class PaymentIntentRequest(BaseModel):
     sender_email_raw: str = Field(default="")
     amount: int = Field(default=0, ge=0)
     payment_method: str = Field(default="QRIS")
-    platform: str = Field(default="KondomDonatur")
+    platform: str = Field(default="Kondomatur")
     message_raw: str = Field(default="")
 
 
@@ -51,7 +51,7 @@ class FilterModeRequest(BaseModel):
 
 
 app = FastAPI(
-    title="KondomDonatur API",
+    title="Kondomatur API",
     description="Simulasi moderasi donasi live streaming untuk deteksi promosi judol.",
     version="0.1.0",
 )
@@ -74,7 +74,7 @@ def startup() -> None:
 def root() -> dict[str, Any]:
     init_db()
     return {
-        "app": "KondomDonatur",
+        "app": "Kondomatur",
         "status": "ok",
         "message": "API siap menerima simulasi donasi.",
     }
@@ -85,7 +85,7 @@ def health() -> dict[str, Any]:
     init_db()
     return {
         "status": "ok",
-        "app": "KondomDonatur",
+        "app": "Kondomatur",
         "environment": ENVIRONMENT,
         "model_available": MODEL_PATH.exists(),
     }
@@ -301,7 +301,7 @@ def donate_page(streamer_id: str) -> HTMLResponse:
             const payload = Object.fromEntries(new FormData(form).entries());
             payload.amount = Number(payload.amount || 0);
             payload.payment_method = 'QRIS';
-            payload.platform = 'KondomDonatur';
+            payload.platform = 'Kondomatur';
             const res = await fetch('/api/payment-intents', {{
               method: 'POST',
               headers: {{ 'Content-Type': 'application/json' }},

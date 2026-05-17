@@ -1,2 +1,2 @@
-"""KondomDonatur source package."""
+"""Kondomatur source package."""
 

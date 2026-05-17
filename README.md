@@ -1,6 +1,6 @@
-# KondomDonatur
+# Kondomatur
 
-KondomDonatur adalah prototype AI-powered donation payment gateway untuk streamer. Sistem ini memoderasi nama pengirim dan pesan donasi sebelum payment sandbox dilanjutkan ke checkout dan overlay.
+Kondomatur adalah prototype AI-powered donation payment gateway untuk streamer. Sistem ini memoderasi nama pengirim dan pesan donasi sebelum payment sandbox dilanjutkan ke checkout dan overlay.
 
 Sistem ini tidak melakukan integrasi pembayaran nyata dan tidak memakai data pribadi nyata. Semua data contoh bersifat sintetis untuk deteksi dan moderasi konten berbahaya.
 
@@ -32,7 +32,7 @@ Sistem ini tidak melakukan integrasi pembayaran nyata dan tidak memakai data pri
 ## Install
 
 ```bash
-cd KondomDonatur
+cd Kondomatur
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 Windows:
 
 ```bash
-cd KondomDonatur
+cd Kondomatur
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
@@ -237,7 +237,7 @@ Test minimal mencakup preprocessing, rule detector, dan decision engine untuk mo
 
 ## Urutan Demo Lokal
 
-Jalankan dari root project `KondomDonatur`:
+Jalankan dari root project `Kondomatur`:
 
 ```bash
 python scripts/init_db.py
