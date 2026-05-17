@@ -25,21 +25,41 @@ st.set_page_config(page_title="Kondomatur - Panel Streamer", page_icon="KT", lay
 st.markdown(
     """
     <style>
+    .stApp { background: #070807; color: #f7f7fb; }
     .block-container { padding-top: 2rem; max-width: 1180px; }
     [data-testid="stMetric"] {
-        background: #f8fafc;
-        border: 1px solid #d9e0ea;
-        border-radius: 8px;
-        padding: 14px;
+        background: #171817;
+        border: 1px solid #242629;
+        border-radius: 22px;
+        padding: 16px;
+        box-shadow: 0 20px 55px rgba(0,0,0,.28);
     }
     div[data-testid="stAlert"] {
-        border-radius: 8px;
+        border-radius: 16px;
     }
     .kd-card {
-        border: 1px solid #d9e0ea;
-        border-radius: 8px;
-        padding: 16px;
-        background: #ffffff;
+        border: 1px solid #242629;
+        border-radius: 22px;
+        padding: 20px;
+        background: #171817;
+        box-shadow: 0 20px 55px rgba(0,0,0,.28);
+    }
+    .premium-title {
+        color: #8e8e97;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    .status-chip {
+        display: inline-block;
+        margin: 0 8px 8px 0;
+        padding: 9px 12px;
+        border: 1px solid #28302e;
+        border-radius: 999px;
+        background: #101514;
+        color: #d9fff5;
+        font-weight: 800;
+        font-size: 13px;
     }
     </style>
     """,
@@ -60,25 +80,29 @@ current_mode = settings.get("filter_mode", "sensor")
 
 mode_col, status_col = st.columns([1, 2])
 with mode_col:
-    selected_mode = st.radio(
-        "Mode proteksi",
-        ["sensor", "block"],
-        index=["sensor", "block"].index(current_mode),
-        horizontal=True,
-    )
-    if selected_mode != current_mode:
-        settings = api_post(
-            "/api/settings/filter-mode",
-            {"streamer_id": streamer_id, "filter_mode": selected_mode},
-        )
-        st.success(f"Mode aktif: {settings['filter_mode']}")
+    st.markdown('<div class="premium-title">Mode proteksi</div>', unsafe_allow_html=True)
+    sensor_col, block_col = st.columns(2)
+    with sensor_col:
+        if st.button("Sensor", type="primary" if current_mode == "sensor" else "secondary", use_container_width=True):
+            if current_mode != "sensor":
+                api_post("/api/settings/filter-mode", {"streamer_id": streamer_id, "filter_mode": "sensor"})
+                st.rerun()
+    with block_col:
+        if st.button("Blokir", type="primary" if current_mode == "block" else "secondary", use_container_width=True):
+            if current_mode != "block":
+                api_post("/api/settings/filter-mode", {"streamer_id": streamer_id, "filter_mode": "block"})
+                st.rerun()
 
 with status_col:
-    st.write("Status sistem")
-    s1, s2, s3 = st.columns(3)
-    s1.success("AI Moderation aktif")
-    s2.success("Payment Sandbox aktif")
-    s3.success("Overlay aktif")
+    st.markdown('<div class="premium-title">Status sistem</div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <span class="status-chip">AI Moderation aktif</span>
+        <span class="status-chip">Payment Sandbox aktif</span>
+        <span class="status-chip">Overlay aktif</span>
+        """,
+        unsafe_allow_html=True,
+    )
 
 donate_link = f"{API_BASE_URL}/donate/{streamer_id}"
 overlay_link = f"{API_BASE_URL}/overlay/{streamer_id}"

@@ -46,7 +46,36 @@ function copyText(value) {
   navigator.clipboard.writeText(value);
 }
 
-function layout(title, content) {
+function layout(title, content, variant = "default") {
+  const intro = variant === "console"
+    ? `
+      <section class="console-intro">
+        <div>
+          <p class="eyebrow">Streamer control room</p>
+          <h1>${title}</h1>
+        </div>
+        <div class="api-card compact-api">
+          <label>Backend API URL
+            <input id="apiUrl" value="${apiBaseUrl()}" />
+          </label>
+        </div>
+      </section>
+    `
+    : `
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Payment gateway sandbox</p>
+          <h1>${title}</h1>
+          <p class="copy">AI moderation, payment sandbox, dan overlay OBS dalam satu alur sederhana untuk demo streamer.</p>
+        </div>
+        <div class="api-card">
+          <label>Backend API URL
+            <input id="apiUrl" value="${apiBaseUrl()}" />
+          </label>
+          <span class="hint">Gunakan URL Render/Railway saat demo online.</span>
+        </div>
+      </section>
+    `;
   app.innerHTML = `
     <header class="topbar">
       <a class="brand" href="/streamer">
@@ -59,19 +88,7 @@ function layout(title, content) {
         <a href="/overlay/${DEFAULT_STREAMER_ID}">Overlay</a>
       </nav>
     </header>
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Payment gateway sandbox</p>
-        <h1>${title}</h1>
-        <p class="copy">AI moderation, payment sandbox, dan overlay OBS dalam satu alur sederhana untuk demo streamer.</p>
-      </div>
-      <div class="api-card">
-        <label>Backend API URL
-          <input id="apiUrl" value="${apiBaseUrl()}" />
-        </label>
-        <span class="hint">Gunakan URL Render/Railway saat demo online.</span>
-      </div>
-    </section>
+    ${intro}
     ${content}
   `;
   document.querySelector("#apiUrl").addEventListener("change", (event) => {
@@ -81,102 +98,137 @@ function layout(title, content) {
 }
 
 async function renderStreamer() {
-  layout(
-    "Panel Streamer",
-    `
-    <section class="panel control-panel">
-      <div>
-        <span class="section-label">Proteksi live</span>
-        <h2>Mode moderasi</h2>
-        <p class="muted">Sensor menjaga donasi tetap masuk dan menyamarkan overlay. Blokir menolak payment intent ketika judol terdeteksi.</p>
-      </div>
-      <label>Mode proteksi
-        <select id="mode">
-          <option value="sensor">Mode Sensor</option>
-          <option value="block">Mode Blokir</option>
-        </select>
-      </label>
-    </section>
-    <section class="panel">
-      <div>
-        <span class="section-label">Kesiapan sistem</span>
-        <h2>Status operasional</h2>
-        <div class="status-row">
-          <span class="pill">AI Moderation aktif</span>
-          <span class="pill">Payment Sandbox aktif</span>
-          <span class="pill">Overlay aktif</span>
-        </div>
-      </div>
-    </section>
-    <section class="panel link-panel">
-      <div class="link-row">
-        <label>Link donasi<input id="donateLink" readonly /></label>
-        <button class="secondary" id="copyDonate">Copy</button>
-      </div>
-      <div class="link-row">
-        <label>Link overlay OBS<input id="overlayLink" readonly /></label>
-        <button class="secondary" id="copyOverlay">Copy</button>
-      </div>
-    </section>
-    <section class="panel">
-      <span class="section-label">Ringkasan</span>
-      <div class="metrics" id="metrics"></div>
-    </section>
-    <section class="panel">
-      <span class="section-label">Monitoring</span>
-      <h2>Donasi terbaru</h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Sender/display name</th><th>Amount</th><th>Label</th><th>Action</th><th>Payment</th><th>Overlay</th></tr></thead>
-          <tbody id="latestRows"><tr><td colspan="6">Memuat...</td></tr></tbody>
-        </table>
-      </div>
-    </section>
-    `,
-  );
-
   const settings = await api("/api/settings");
   const streamerId = settings.streamer_id || DEFAULT_STREAMER_ID;
+  const logs = await api("/api/moderation/logs?limit=20");
+  const currentMode = settings.filter_mode || "sensor";
   const donateLink = `${window.location.origin}/donate/${streamerId}`;
   const overlayLink = `${window.location.origin}/overlay/${streamerId}`;
-  document.querySelector("#mode").value = settings.filter_mode || "sensor";
-  document.querySelector("#donateLink").value = donateLink;
-  document.querySelector("#overlayLink").value = overlayLink;
-  document.querySelector("#copyDonate").addEventListener("click", () => copyText(donateLink));
-  document.querySelector("#copyOverlay").addEventListener("click", () => copyText(overlayLink));
-  document.querySelector("#mode").addEventListener("change", async (event) => {
-    await api("/api/settings/filter-mode", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ streamer_id: streamerId, filter_mode: event.target.value }),
-    });
-  });
-
-  const logs = await api("/api/moderation/logs?limit=20");
   const total = logs.length;
   const safe = logs.filter((row) => row.action_label === "allow").length;
   const masked = logs.filter((row) => row.action_label === "mask").length;
   const blocked = logs.filter((row) => row.action_label === "block").length;
+  const filtered = masked + blocked;
   const paid = logs.filter((row) => row.payment_status === "success").reduce((sum, row) => sum + Number(row.amount || 0), 0);
-  document.querySelector("#metrics").innerHTML = [
-    ["Total donasi", total],
-    ["Total aman", safe],
-    ["Total disensor", masked],
-    ["Total diblokir", blocked],
-    ["Nominal berhasil", money(paid)],
-  ].map(([label, value]) => `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`).join("");
-  document.querySelector("#latestRows").innerHTML = logs.length
-    ? logs.map((row) => `
-      <tr>
-        <td>${escapeHTML(row.display_sender_name || row.sender_name_raw || "-")}</td>
-        <td>${money(row.amount)}</td>
-        <td><span class="badge">${escapeHTML(row.label_multiclass)}</span></td>
-        <td><span class="badge">${escapeHTML(row.action_label)}</span></td>
-        <td><span class="badge">${escapeHTML(row.payment_status)}</span></td>
-        <td><span class="badge">${Number(row.overlay_displayed) ? "visible" : "hidden"}</span></td>
-      </tr>
-    `).join("")
-    : `<tr><td colspan="6">Belum ada donasi.</td></tr>`;
+
+  layout(
+    "Panel Streamer",
+    `
+    <section class="streamer-dashboard">
+      <div class="kpi-grid">
+        <article class="kpi-card kpi-revenue">
+          <span>Total pendapatan</span>
+          <strong>${money(paid).replace("IDR", "Rp ")}</strong>
+        </article>
+        <article class="kpi-card">
+          <span>Donasi terfilter</span>
+          <strong class="accent-hot">${filtered}</strong>
+          <small>Event</small>
+        </article>
+        <article class="kpi-card mode-card">
+          <span>Mode proteksi</span>
+          <div class="segmented-mode" role="group" aria-label="Mode proteksi">
+            <button class="mode-button ${currentMode === "sensor" ? "is-active" : ""}" data-mode="sensor" type="button">
+              <span class="mode-dot"></span>
+              Sensor
+            </button>
+            <button class="mode-button ${currentMode === "block" ? "is-active" : ""}" data-mode="block" type="button">
+              <span class="mode-dot"></span>
+              Blokir
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="premium-grid">
+        <section class="glass-panel link-console">
+          <div>
+            <span class="section-label">Distribution</span>
+            <h2>Link publik streamer</h2>
+          </div>
+          <div class="link-stack">
+            <div class="premium-link-row">
+              <label>Link donasi<input id="donateLink" readonly value="${donateLink}" /></label>
+              <button class="secondary" id="copyDonate">Copy</button>
+            </div>
+            <div class="premium-link-row">
+              <label>Link overlay OBS<input id="overlayLink" readonly value="${overlayLink}" /></label>
+              <button class="secondary" id="copyOverlay">Copy</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="glass-panel status-console">
+          <span class="section-label">System status</span>
+          <div class="status-list">
+            <span class="status-chip"><i></i>AI Moderation aktif</span>
+            <span class="status-chip"><i></i>Payment Sandbox aktif</span>
+            <span class="status-chip"><i></i>Overlay aktif</span>
+          </div>
+          <div class="mini-metrics">
+            <div><span>Total</span><strong>${total}</strong></div>
+            <div><span>Aman</span><strong>${safe}</strong></div>
+            <div><span>Sensor</span><strong>${masked}</strong></div>
+            <div><span>Blokir</span><strong>${blocked}</strong></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="activity-panel">
+        <header class="activity-header">
+          <div class="activity-title">
+            <span class="chevron-mark">›</span>
+            <h2>Log aktivitas donasi</h2>
+          </div>
+          <span class="live-pill"><i></i>Live monitoring</span>
+        </header>
+        <div class="activity-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Sender/display name</th><th>Amount</th><th>Label</th><th>Action</th><th>Payment</th><th>Overlay</th></tr></thead>
+              <tbody id="latestRows">
+                ${logs.length ? logs.map((row) => `
+                  <tr>
+                    <td>${escapeHTML(row.display_sender_name || row.sender_name_raw || "-")}</td>
+                    <td>${money(row.amount)}</td>
+                    <td><span class="badge">${escapeHTML(row.label_multiclass)}</span></td>
+                    <td><span class="badge">${escapeHTML(row.action_label)}</span></td>
+                    <td><span class="badge">${escapeHTML(row.payment_status)}</span></td>
+                    <td><span class="badge">${Number(row.overlay_displayed) ? "visible" : "hidden"}</span></td>
+                  </tr>
+                `).join("") : `
+                  <tr>
+                    <td class="empty-cell" colspan="6">
+                      <div class="empty-state">
+                        <span class="empty-icon">i</span>
+                        <p>Belum ada donasi yang masuk.</p>
+                      </div>
+                    </td>
+                  </tr>
+                `}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <span class="version-mark">kt-v1.0.0-alpha</span>
+      </section>
+    </section>
+    `,
+    "console",
+  );
+  document.querySelector("#copyDonate").addEventListener("click", () => copyText(donateLink));
+  document.querySelector("#copyOverlay").addEventListener("click", () => copyText(overlayLink));
+  document.querySelectorAll(".mode-button").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const mode = button.dataset.mode;
+      await api("/api/settings/filter-mode", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ streamer_id: streamerId, filter_mode: mode }),
+      });
+      document.querySelectorAll(".mode-button").forEach((item) => item.classList.toggle("is-active", item.dataset.mode === mode));
+    });
+  });
 }
 
 function renderDonate(streamerId = DEFAULT_STREAMER_ID) {

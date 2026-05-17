@@ -143,6 +143,9 @@ def _page(title: str, body: str) -> HTMLResponse:
             .public-notice.success strong {{ color: #14532d; }}
             .public-notice.danger {{ border-color: #fecaca; background: #fff1f2; color: #9f1239; }}
             .public-notice.danger strong {{ color: #881337; }}
+            .segmented-mode {{ display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; border: 1px solid #d9e0ea; border-radius: 10px; background: #f8fafc; }}
+            .mode-button {{ border-color: transparent; background: transparent; color: #5f6b7a; text-transform: uppercase; }}
+            .mode-button.is-active {{ border-color: #4b2df7; background: #4b2df7; color: #fff; box-shadow: 0 10px 24px rgba(75,45,247,.22); }}
             .overlay-card {{ border: 1px solid #d7dde8; border-radius: 8px; padding: 28px; background: #fff; box-shadow: 0 12px 30px rgba(23, 37, 84, .12); }}
             .amount {{ font-size: 32px; font-weight: 900; }}
             .message {{ font-size: 24px; margin-top: 12px; color: #374151; }}
@@ -192,10 +195,10 @@ def streamer_panel() -> HTMLResponse:
             <p class="muted">Prototype AI-powered donation payment gateway. Pilih mode proteksi, salin link donasi, lalu pasang overlay di OBS.</p>
             <div class="grid">
               <label>Mode proteksi
-                <select id="mode">
-                  <option value="sensor" {"selected" if settings.get("filter_mode") == "sensor" else ""}>Mode Sensor</option>
-                  <option value="block" {"selected" if settings.get("filter_mode") == "block" else ""}>Mode Blokir</option>
-                </select>
+                <div class="segmented-mode" role="group" aria-label="Mode proteksi">
+                  <button class="mode-button {"is-active" if settings.get("filter_mode") == "sensor" else ""}" data-mode="sensor" type="button">Sensor</button>
+                  <button class="mode-button {"is-active" if settings.get("filter_mode") == "block" else ""}" data-mode="block" type="button">Blokir</button>
+                </div>
               </label>
               <div>
                 <p class="muted">Status sistem</p>
@@ -231,14 +234,17 @@ def streamer_panel() -> HTMLResponse:
             </table>
           </section>
         </main>
-        <script>
-          const streamerId = {streamer_id!r};
-          const modeEl = document.querySelector('#mode');
-          modeEl.addEventListener('change', async () => {{
-            await fetch('/api/settings/filter-mode', {{
-              method: 'POST',
-              headers: {{ 'Content-Type': 'application/json' }},
-              body: JSON.stringify({{ streamer_id: streamerId, filter_mode: modeEl.value }})
+          <script>
+            const streamerId = {streamer_id!r};
+          document.querySelectorAll('.mode-button').forEach((button) => {{
+            button.addEventListener('click', async () => {{
+              const mode = button.dataset.mode;
+              await fetch('/api/settings/filter-mode', {{
+                method: 'POST',
+                headers: {{ 'Content-Type': 'application/json' }},
+                body: JSON.stringify({{ streamer_id: streamerId, filter_mode: mode }})
+              }});
+              document.querySelectorAll('.mode-button').forEach((item) => item.classList.toggle('is-active', item.dataset.mode === mode));
             }});
           }});
           function absolutePath(path) {{ return new URL(path, window.location.origin).toString(); }}
