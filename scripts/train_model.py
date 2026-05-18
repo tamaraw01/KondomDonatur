@@ -1,3 +1,5 @@
+import argparse
+import subprocess
 import sys
 from pathlib import Path
 
@@ -45,10 +47,32 @@ def train() -> None:
 
     pipeline.fit(x_train, y_train)
     predictions = pipeline.predict(x_test)
-    print(classification_report(y_test, predictions))
+    print(classification_report(y_test, predictions), flush=True)
     joblib.dump(pipeline, MODEL_PATH)
-    print(f"Model saved to {MODEL_PATH}")
+    print(f"Model saved to {MODEL_PATH}", flush=True)
+
+
+def run_tests() -> None:
+    print("\nRunning automated tests after model training...", flush=True)
+    result = subprocess.run([sys.executable, "-m", "pytest"], cwd=PROJECT_ROOT)
+    if result.returncode != 0:
+        raise SystemExit(result.returncode)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Train the moderation model and run the project tests in one command.",
+    )
+    parser.add_argument(
+        "--skip-tests",
+        action="store_true",
+        help="Only train and save the model without running pytest afterward.",
+    )
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
+    args = parse_args()
     train()
+    if not args.skip_tests:
+        run_tests()

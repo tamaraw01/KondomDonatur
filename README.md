@@ -67,16 +67,22 @@ Default streamer setting:
 - `filter_mode`: `sensor`
 - threshold review/mask/block: `35`, `60`, `80`
 
-## Train Model
+## Train + Test Model
 
 ```bash
 python scripts/train_model.py
 ```
 
-Script ini akan membuat `data/sample/donation_sample.csv` jika belum ada, melatih baseline model, menampilkan `classification_report`, lalu menyimpan:
+Script ini akan membuat `data/sample/donation_sample.csv` jika belum ada, melatih baseline model, menampilkan `classification_report`, menyimpan model, lalu otomatis menjalankan test suite:
 
 ```text
 models/judol_detector.pkl
+```
+
+Jika hanya ingin melatih dan menyimpan model tanpa menjalankan test, gunakan:
+
+```bash
+python scripts/train_model.py --skip-tests
 ```
 
 Dataset training dibuat seimbang untuk 4 kelas dengan 26.004 baris unik, masing-masing 6.501 baris per kelas. Generator menggabungkan data sintetis dengan dataset asli `data/sample/youtube_chat_jogja_clean.csv` melalui kolom `cleaned_message` dan `label` (`0` dipetakan ke `benign`, `1` dipetakan ke `explicit_judol`), lalu membuat augmentasi aman agar variasinya lebih luas. Generator juga melakukan strict de-duplication sehingga tidak ada `message_raw` yang sama, tidak ada kombinasi `text_for_model` + label yang sama, dan tidak ada kombinasi sender/message/label yang sama. Variasinya mencakup fancy Unicode, huruf hias, confusable lintas script, leetspeak, zero-width character, domain tersamarkan, angka hias, pemisah simbol, emoji wrapper yang aman, spam non-judol dengan URL legal/sintetis, bahasa gaul/non-baku live chat seperti `wkwk`, `ngab`, `cuy`, `ggwp`, `gaskeun`, `sabi`, `kuy`, `bgt`, `udh`, `gk/ga`, pola provider placeholder seperti `net888`/`vip777`, serta pola nyata dari chat YouTube seperti `pas4d`, `wisdomtoto`, `freebet`, `freechip`, dan `ketik di google`.
@@ -231,10 +237,10 @@ Contoh request:
 ## Testing
 
 ```bash
-pytest
+python scripts/train_model.py
 ```
 
-Test minimal mencakup preprocessing, rule detector, dan decision engine untuk mode Sensor/Blokir.
+Command ini sudah menggabungkan training model dan test minimal yang mencakup preprocessing, rule detector, dan decision engine untuk mode Sensor/Blokir. Untuk menjalankan test saja, tetap bisa memakai `pytest`.
 
 ## Urutan Demo Lokal
 
