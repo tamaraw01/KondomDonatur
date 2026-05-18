@@ -4,11 +4,12 @@ from collections.abc import Callable
 
 import pandas as pd
 
-from src.config import SAMPLE_DATA_PATH, ensure_project_dirs
+from src.config import PROJECT_ROOT, SAMPLE_DATA_PATH, ensure_project_dirs
 from src.feature_engineering import build_text_for_model
 
 
 SAMPLES_PER_CLASS = 2500
+REAL_YOUTUBE_CHAT_PATH = PROJECT_ROOT / "data" / "sample" / "youtube_chat_jogja_clean.csv"
 
 EMOJI_WRAPPERS = [
     ("", ""),
@@ -656,14 +657,23 @@ def message_for_label(label: str, index: int) -> str:
     return explicit_message(index)
 
 
-def generate_rows_for_label(label: str, count: int) -> list[dict[str, object]]:
+def generate_rows_for_label(
+    label: str,
+    count: int,
+    start_index: int = 0,
+    prefix: str = "sample",
+    existing_keys: set[tuple[str, str, str]] | None = None,
+) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
-    seen: set[tuple[str, str, str]] = set()
-    index = 0
+    seen: set[tuple[str, str, str]] = set(existing_keys or set())
+    index = start_index
     while len(rows) < count:
         sender = sender_for_label(label, index)
         message = message_for_label(label, index)
         key = (label, sender, message)
+        if key in seen and prefix == "balanced":
+            message = f"{message} batch {index}"
+            key = (label, sender, message)
         index += 1
         if key in seen:
             continue
@@ -671,7 +681,7 @@ def generate_rows_for_label(label: str, count: int) -> list[dict[str, object]]:
         row_number = len(rows)
         rows.append(
             {
-                "donation_id": f"sample_{label}_{row_number:04d}",
+                "donation_id": f"{prefix}_{label}_{row_number:05d}",
                 "sender_name_raw": sender,
                 "sender_email_raw": f"user{row_number:04d}@example.com",
                 "amount": 10000 + (row_number % 25) * 2500,
@@ -685,14 +695,103 @@ def generate_rows_for_label(label: str, count: int) -> list[dict[str, object]]:
     return rows
 
 
+def real_label_to_multiclass(label: int) -> str:
+    return "explicit_judol" if int(label) == 1 else "benign"
+
+
+def real_youtube_variant(message: str, label: str, index: int) -> str:
+    if label == "benign":
+        variants = [
+            message,
+            add_chat_texture(message, index),
+            wrap_message(message, index),
+            noisy_text(message, index),
+            mixed_case_text(message, index),
+        ]
+    else:
+        obfuscator = OBFUSCATORS[(index % (len(OBFUSCATORS) - 1)) + 1]
+        variants = [
+            obfuscator(message, index),
+            wrap_message(obfuscator(message, index + 3), index),
+            zero_width_text(message, index),
+            separator_text(message, SEPARATORS[index % len(SEPARATORS)]),
+        ]
+    return variants[index % len(variants)]
+
+
+def load_real_youtube_rows() -> list[dict[str, object]]:
+    if not REAL_YOUTUBE_CHAT_PATH.exists():
+        return []
+
+    df = pd.read_csv(REAL_YOUTUBE_CHAT_PATH)
+    required = {"author_name", "cleaned_message", "label"}
+    missing = required.difference(df.columns)
+    if missing:
+        raise RuntimeError(f"{REAL_YOUTUBE_CHAT_PATH.name} missing columns: {', '.join(sorted(missing))}")
+
+    rows: list[dict[str, object]] = []
+    for index, row in df.reset_index(drop=True).iterrows():
+        cleaned_message = str(row.get("cleaned_message") or "").strip()
+        if not cleaned_message or cleaned_message.lower() == "nan":
+            continue
+        label = real_label_to_multiclass(int(row["label"]))
+        author_name = str(row.get("author_name") or f"youtube_viewer_{index:04d}").strip() or f"youtube_viewer_{index:04d}"
+        sender = f"{author_name}_{index:05d}"
+        for variant_index, message in enumerate([cleaned_message, real_youtube_variant(cleaned_message, label, index)]):
+            rows.append(
+                {
+                    "donation_id": f"real_youtube_{label}_{index:05d}_{variant_index}",
+                    "sender_name_raw": sender if variant_index == 0 else f"{sender}_chat",
+                    "sender_email_raw": f"youtube{index:05d}@example.com",
+                    "amount": 10000 + (index % 30) * 2000,
+                    "payment_method": "QRIS",
+                    "platform": "YouTube Live",
+                    "message_raw": message,
+                    "label_multiclass": label,
+                    "text_for_model": build_text_for_model(sender, message),
+                }
+            )
+    return rows
+
+
 def generate_sample_dataset(force: bool = False) -> pd.DataFrame:
     ensure_project_dirs()
     if SAMPLE_DATA_PATH.exists() and not force:
         return pd.read_csv(SAMPLE_DATA_PATH)
 
+    rows_by_label: dict[str, list[dict[str, object]]] = {
+        "benign": [],
+        "spam_non_judol": [],
+        "suspicious_judol": [],
+        "explicit_judol": [],
+    }
+    for label in ["benign", "spam_non_judol", "suspicious_judol", "explicit_judol"]:
+        rows_by_label[label].extend(generate_rows_for_label(label, SAMPLES_PER_CLASS))
+
+    for row in load_real_youtube_rows():
+        rows_by_label[str(row["label_multiclass"])].append(row)
+
+    target_count = max(len(label_rows) for label_rows in rows_by_label.values())
+    for label, label_rows in rows_by_label.items():
+        if len(label_rows) < target_count:
+            needed = target_count - len(label_rows)
+            existing_keys = {
+                (str(row["label_multiclass"]), str(row["sender_name_raw"]), str(row["message_raw"]))
+                for row in label_rows
+            }
+            label_rows.extend(
+                generate_rows_for_label(
+                    label,
+                    needed,
+                    start_index=100000 + len(label_rows),
+                    prefix="balanced",
+                    existing_keys=existing_keys,
+                )
+            )
+
     rows: list[dict[str, object]] = []
     for label in ["benign", "spam_non_judol", "suspicious_judol", "explicit_judol"]:
-        rows.extend(generate_rows_for_label(label, SAMPLES_PER_CLASS))
+        rows.extend(rows_by_label[label])
 
     df = pd.DataFrame(rows)
     duplicate_count = int(df.duplicated(subset=["sender_name_raw", "message_raw", "label_multiclass"]).sum())

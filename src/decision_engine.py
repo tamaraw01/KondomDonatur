@@ -83,7 +83,8 @@ def make_decision(input_data: dict[str, Any], filter_mode: str = "sensor") -> di
     rule_label = rule_based_label(features)
     model_result = predict_label(sender_name_raw, message_raw, sender_email_raw)
     label = resolve_label(model_result, rule_label, features)
-    risk = calculate_risk_score(model_result, rule_label, features, amount, payment_method)
+    risk_label = label if LABEL_SEVERITY.get(label, 0) > LABEL_SEVERITY.get(rule_label, 0) else rule_label
+    risk = calculate_risk_score(model_result, risk_label, features, amount, payment_method)
     risk_score = risk["risk_score"]
 
     action_label = "allow"

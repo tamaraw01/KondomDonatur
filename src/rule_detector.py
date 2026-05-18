@@ -29,6 +29,12 @@ GAMBLING_KEYWORDS = {
     "wd",
     "withdraw",
     "bonus",
+    "freebet",
+    "freechip",
+    "newmember",
+    "jp",
+    "rungkad",
+    "chip",
     "admin",
     "bocoran",
     "pola",
@@ -53,6 +59,10 @@ GAME_PROVIDER_KEYWORDS = {
     "game88",
     "bet88",
     "bet777",
+    "wisdomtoto",
+    "bwtogel",
+    "pas4d",
+    "meteorwin",
 }
 
 GAME_KEYWORDS = {"slot", "casino", "togel", "scatter", "spin", "jackpot"}
@@ -96,8 +106,11 @@ PROVIDER_NUMBER_REGEX = re.compile(
     r"\b(?:net|vip|play|game|spin|slot|bola|bet|max|win|jackpot|situs|provider)\s*(?:88|888|77|777|99|999)\b",
     re.I,
 )
+REAL_PROVIDER_REGEX = re.compile(r"\b(?:[a-z0-9]*toto|[a-z0-9]*togel|pas\s*4\s*d|meteor\s*win)\b", re.I)
 PROMO_PHRASE_REGEX = re.compile(
-    r"\b(?:pola\s+(?:terbaik|admin|gacor)|hanya\s+di|auto\s+wd|jam\s+gacor|bonus\s+new\s+member)\b",
+    r"\b(?:pola\s+(?:terbaik|admin|gacor)|hanya\s+di|auto\s+wd|jam\s+gacor|bonus\s+new\s+member|"
+    r"ketik\s+di\s+google|daftar\s+dapat|gampang\s+menang|anti\s+rungkad|pasti\s+jp|"
+    r"gratis\s+(?:chip|freebet))\b",
     re.I,
 )
 
@@ -139,7 +152,12 @@ def contains_percentage_claim(text: object) -> bool:
 def contains_provider_number_pattern(text: object) -> bool:
     value = deobfuscate_text(text)
     compact = re.sub(r"[^a-z0-9]", "", value)
-    return bool(PROVIDER_NUMBER_REGEX.search(value) or PROVIDER_NUMBER_REGEX.search(compact))
+    return bool(
+        PROVIDER_NUMBER_REGEX.search(value)
+        or PROVIDER_NUMBER_REGEX.search(compact)
+        or REAL_PROVIDER_REGEX.search(value)
+        or REAL_PROVIDER_REGEX.search(compact)
+    )
 
 
 def contains_promo_phrase(text: object) -> bool:

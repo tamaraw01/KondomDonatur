@@ -91,3 +91,20 @@ def test_gaul_non_judol_promo_goes_to_review_not_mask():
     assert decision["label_multiclass"] == "spam_non_judol"
     assert decision["action_label"] == "review"
     assert decision["display_message"] == "spill katalog baru cuy gercep ya"
+
+
+def test_real_youtube_judol_terms_are_explicit_high_risk():
+    decision = make_decision(
+        {
+            "sender_name_raw": "viewer",
+            "sender_email_raw": "viewer@example.com",
+            "amount": 20000,
+            "payment_method": "QRIS",
+            "platform": "YouTube Live",
+            "message_raw": "ketik di googlewisdomtoto",
+        },
+        "sensor",
+    )
+    assert decision["label_multiclass"] == "explicit_judol"
+    assert decision["risk_score"] >= 80
+    assert decision["action_label"] == "mask"
